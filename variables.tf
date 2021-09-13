@@ -6,7 +6,7 @@ variable "tfc_oauth_token_id" {
 }
 
 variable "organization" {
-    type = string
-    default ="yulei"
-    description="Name of TFC/E organization"
+  type        = string
+  default     = "yulei"
+  description = "Name of TFC/E organization"
 }
