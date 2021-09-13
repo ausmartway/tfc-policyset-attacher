@@ -20,7 +20,7 @@ data "tfe_workspace_ids" "azure" {
 resource "tfe_policy_set" "aws-s3-best-practices" {
   name          = "aws-s3-security-best-practice-sentinel"
   organization  = var.organization
-  workspace_ids = [data.tfe_workspace_ids.aws.id]
+  workspace_ids = [data.tfe_workspace_ids.aws.ids]
   vcs_repo {
     identifier         = "ausmartway/aws-s3-security-best-practice-sentinel"
     ingress_submodules = false
@@ -31,7 +31,7 @@ resource "tfe_policy_set" "aws-s3-best-practices" {
 resource "tfe_policy_set" "azure-fundational-sentinel-policies" {
   name          = "azure-fundational-sentinel-policies"
   organization  = var.organization
-  workspace_ids = [data.tfe_workspace_ids.aws.id]
+  workspace_ids = [data.tfe_workspace_ids.aws.ids]
   vcs_repo {
     identifier         = "ausmartway/azure-fundational-sentinel-policies"
     ingress_submodules = false
@@ -42,7 +42,7 @@ resource "tfe_policy_set" "azure-fundational-sentinel-policies" {
 resource "tfe_policy_set" "cis-gcp-fundational-policies" {
   name          = "cis-gcp-fundational-policies"
   organization  = var.organization
-  workspace_ids = [data.tfe_workspace_ids.aws.id]
+  workspace_ids = [data.tfe_workspace_ids.aws.ids]
   vcs_repo {
     identifier         = "ausmartway/ausmartway/cis-gcp-fundational-policies"
     ingress_submodules = false
