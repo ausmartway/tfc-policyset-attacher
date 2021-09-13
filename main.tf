@@ -18,7 +18,6 @@ data "tfe_workspace_ids" "azure" {
 
 
 resource "tfe_policy_set" "aws-s3-best-practices" {
-  global        = false
   name          = "aws-s3-security-best-practice-sentinel"
   organization  = var.organization
   workspace_ids = [data.tfe_workspace_ids.aws.id]
@@ -30,7 +29,6 @@ resource "tfe_policy_set" "aws-s3-best-practices" {
 }
 
 resource "tfe_policy_set" "azure-fundational-sentinel-policies" {
-  global        = false
   name          = "azure-fundational-sentinel-policies"
   organization  = var.organization
   workspace_ids = [data.tfe_workspace_ids.aws.id]
@@ -42,7 +40,6 @@ resource "tfe_policy_set" "azure-fundational-sentinel-policies" {
 }
 
 resource "tfe_policy_set" "cis-gcp-fundational-policies" {
-  global        = false
   name          = "cis-gcp-fundational-policies"
   organization  = var.organization
   workspace_ids = [data.tfe_workspace_ids.aws.id]
