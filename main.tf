@@ -44,7 +44,7 @@ resource "tfe_policy_set" "cis-gcp-fundational-policies" {
   organization  = var.organization
   workspace_ids = values(data.tfe_workspace_ids.gcp.ids)
   vcs_repo {
-    identifier         = "ausmartway/ausmartway/cis-gcp-fundational-policies"
+    identifier         = "ausmartway/cis-gcp-fundational-policies"
     ingress_submodules = false
     oauth_token_id     = var.tfc_oauth_token_id
   }
