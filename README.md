@@ -1,1 +1,9 @@
-# terraform-template
+# tfc-policyset-attacher
+
+[Terraform Cloud](https://www.terraform.io/cloud) is a reliable, secure and governed CD pipeline for infrastructure. It uses the concept of infrastructre/configuration as code, to provision infrastructures or configure target systems, even itself.
+
+Terraform Cloud uses [Sentinel](https://www.hashicorp.com/sentinel) as the policy as code tool. Orgnisations can write they security or operational policies in Sentinel code, set enforcement level ,group policies into policy set, and apply the policy sets to all workspaces or individual workspaces. 
+
+When the number of policy sets and number of workspaces increase, managing policy sets becomes complicated. Setting policy set as global means it is enforced on all workspaces, this may become too rigid. On the other hand, applying policy sets to indivitual workspaces become very compleicated operationally - given there are n policy sets and m workspaces, the total number of attachements can potentially be n*m. 
+
+This repository shows how to  manage policy set using tag system supported by [Terraform provider for TFE](https://registry.terraform.io/providers/hashicorp/tfe) since version 0.26.1. The data source [tfe_workspace_ids](https://registry.terraform.io/providers/hashicorp/tfe/latest/docs/data-sources/workspace_ids) can be used to find workspaces with certain tag or combination of tags, then resource [tfe_policy_set](https://registry.terraform.io/providers/hashicorp/tfe/latest/docs/resources/policy_set) can use [workspace_ids](https://registry.terraform.io/providers/hashicorp/tfe/latest/docs/resources/policy_set#workspace_ids) argument to reference that set of workspaces. 
