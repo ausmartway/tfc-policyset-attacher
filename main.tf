@@ -15,7 +15,10 @@ data "tfe_workspace_ids" "azure" {
   organization = var.organization
 }
 
-
+data "tfe_workspace_ids" "tfc" {
+  tag_names    = ["tfc"]
+  organization = var.organization
+}
 
 resource "tfe_policy_set" "aws-s3-best-practices" {
   name          = "aws-s3-security-best-practice-sentinel"
@@ -50,4 +53,14 @@ resource "tfe_policy_set" "cis-gcp-fundational-policies" {
   }
 }
 
+resource "tfe_policy_set" "tfc-best-practices" {
+  name          = "tfc-best-practices"
+  organization  = var.organization
+  workspace_ids = values(data.tfe_workspace_ids.tfc.ids)
+  vcs_repo {
+    identifier         = "ausmartway/sentinel-for-tfc"
+    ingress_submodules = false
+    oauth_token_id     = var.tfc_oauth_token_id
+  }
+}
 
