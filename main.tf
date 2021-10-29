@@ -1,5 +1,7 @@
 ##main.tf
 
+## get all workspace_ids that has tag "aws"
+
 data "tfe_workspace_ids" "aws" {
   tag_names    = ["aws"]
   organization = var.organization
